@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container my-2">
+      <div class="row">
+        <div class="col col-sm-8 col-md-6 col-lg-6 offset-sm-2 offset-md-3">
+          <div class="card border-0 shadow-sm">
+            <h1 class="card-header text-center bg-success text-white">Task List</h1>
+            <div class="card-body">
+              <form id="task-form">
+                <div class="input-group mb-1">
+                  <input type="text" id="task" class="form-control" placeholder="Enter task" />
+                  <button id="addTask" class="btn btn-success" type="submit">Add Task</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="card-body">
+              <h3 class="mb-3">Tasks</h3>
+              <div class="mb-1">
+                <input
+                  type="text"
+                  id="filter"
+                  name="filter"
+                  class="form-control"
+                  placeholder="Filter Your Task"
+                />
+              </div>
+            </div>
+
+            <div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+                <li class="list-group-item">A third item</li>
+                <li class="list-group-item">A third item</li>
+              </ul>
+              <a href="#" class="btn btn-success m-3" id="clear-tasks">Clear Tasks</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <!-- include custom js file -->
+    <script src="app.js"></script>
+  </body>
+</html>
