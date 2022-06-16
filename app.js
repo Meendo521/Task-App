@@ -12,18 +12,17 @@ const taskInput = document.getElementById("task");
 const filterTask = document.querySelector("#task");
 
 //load all eventlisteners
-const loadEventListeners = () => {
+function loadEventListeners() {
   // Add task Event
   form.addEventListener("submit", addTask);
-};
+}
 
 // Add Task
 const addTask = (e) => {
   //No submit of empty value
   if (taskInput.value === "") {
-    alert("Add a task");
+    return alert("Add a task");
   }
-
   //create li element
   const li = document.createElement("li");
   // Add a class
