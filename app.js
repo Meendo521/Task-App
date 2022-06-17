@@ -17,6 +17,8 @@ function loadEventListeners() {
   form.addEventListener("submit", addTask);
   // Remove task event
   taskList.addEventListener("click", removeTask);
+  //Clear tasks event
+  clearBtn.addEventListener("click", clearTask);
 }
 
 // Add Task
@@ -63,5 +65,18 @@ const removeTask = (e) => {
   }
 };
 
+//Clear Task
+const clearTask = () => {
+  //one way of doing it
+  // taskList.innerHTML = "";
+
+  //second way of doing it & Faster
+
+  //loop thru
+  while (taskList.firstChild) {
+    //get ul then remove the first LI recursive
+    taskList.removeChild(taskList.firstChild);
+  }
+};
 // FUNCTION TO LOAD EVENTLISTENERS
 loadEventListeners();
