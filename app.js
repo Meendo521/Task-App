@@ -13,6 +13,8 @@ const filter = document.querySelector("#filter");
 
 //load all eventlisteners
 function loadEventListeners() {
+  //DOM load event
+  document.addEventListener("DOMContentLoaded",getTasks);
   // Add task Event
   form.addEventListener("submit", addTask);
   // Remove task event
