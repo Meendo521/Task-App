@@ -160,12 +160,19 @@ const clearTask = () => {
   // taskList.innerHTML = "";
 
   //second way of doing it & Faster
-
   //loop thru
   while (taskList.firstChild) {
     //get ul then remove the first LI recursive
     taskList.removeChild(taskList.firstChild);
   }
+
+  //Clear from LS
+  clearTasksFromLocalStorage();
+};
+
+//Clear Tasks from LS
+const clearTasksFromLocalStorage = () => {
+  localStorage.clear();
 };
 
 //Filter task
