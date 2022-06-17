@@ -14,7 +14,7 @@ const filter = document.querySelector("#filter");
 //load all eventlisteners
 function loadEventListeners() {
   //DOM load event
-  document.addEventListener("DOMContentLoaded",getTasks);
+  document.addEventListener("DOMContentLoaded", getTasks);
   // Add task Event
   form.addEventListener("submit", addTask);
   // Remove task event
@@ -77,6 +77,41 @@ const storeTaskInLocalStorage = (task) => {
 
   //Set task in LS
   localStorage.setItem("tasks", JSON.stringify(tasks));
+};
+
+//Get tasks from LS
+const getTasks = () => {
+  let tasks;
+  //check tasks in LS not null
+  if (localStorage.getItem("tasks") === null) {
+    tasks = [];
+  } else {
+    //LS not empty get task
+    tasks = JSON.parse(localStorage.getItem("tasks"));
+  }
+
+  //Loop theu tasks
+  tasks.forEach((task) => {
+    //create li element
+    const li = document.createElement("li");
+    // Add a class
+    li.className = "list-group-item";
+    // create Text node & append to li
+    const text = document.createTextNode(task);
+    // append text node to li
+    li.appendChild(text);
+    // create link element
+    const link = document.createElement("a");
+    // Add a class
+    link.className = "delete-item float-end text-danger";
+    // add html icon
+    link.innerHTML = '<i class="fas fa-times-circle"></i>';
+    //append link to li
+    li.appendChild(link);
+
+    // Append li to Ul
+    taskList.appendChild(li);
+  });
 };
 
 // Remove task
