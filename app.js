@@ -72,6 +72,9 @@ const storeTaskInLocalStorage = (task) => {
 
   //append task to tasks
   tasks.push(task);
+
+  //Set task in LS
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
 // Remove task
