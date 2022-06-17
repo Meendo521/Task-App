@@ -64,7 +64,7 @@ const addTask = (e) => {
 // Store in localStorage
 const storeTaskInLocalStorage = (task) => {
   let tasks;
-  //check tasks in LS not null
+  //check LS is not empty
   if (localStorage.getItem("tasks") === null) {
     tasks = [];
   } else {
@@ -122,7 +122,36 @@ const removeTask = (e) => {
     if (confirm("Are you sure?"))
       // remove the li by targeting <i> then <a> then <li>
       e.target.parentElement.parentElement.remove();
+
+    //Remove task from LS
+    removeTaskFromLocalStorage(e.target.parentElement.parentElement);
   }
+};
+
+//Remove Task from LS
+const removeTaskFromLocalStorage = (taskItem) => {
+  let tasks;
+  //check tasks in LS not null
+  if (localStorage.getItem("tasks") === null) {
+    tasks = [];
+  } else {
+    //LS not empty get task
+    tasks = JSON.parse(localStorage.getItem("tasks"));
+  }
+
+  //loo thru tasks
+  tasks.forEach((task, index) => {
+    //check text content matches the current
+    //task in the iterarion you want to delete
+    if (taskItem.textContent === task) {
+      //delete 1 from index
+      tasks.splice(index, 1);
+    } else {
+    }
+  });
+
+  //set LS
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
 //Clear Task
