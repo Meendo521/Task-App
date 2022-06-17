@@ -49,11 +49,29 @@ const addTask = (e) => {
   // Append li to Ul
   taskList.appendChild(li);
 
+  //store in localStorage
+  storeTaskInLocalStorage(taskInput.value);
+
   // clear the input
   taskInput.value = "";
 
   // prevent default element behaviour
   e.preventDefault();
+};
+
+// Store in localStorage
+const storeTaskInLocalStorage = (task) => {
+  let tasks;
+  //check tasks in LS not null
+  if (localStorage.getItem("tasks") === null) {
+    tasks = [];
+  } else {
+    //LS not empty get task
+    tasks = JSON.parse(localStorage.getItem("tasks"));
+  }
+
+  //append task to tasks
+  tasks.push(task);
 };
 
 // Remove task
