@@ -9,7 +9,7 @@ const clearBtn = document.querySelector("#clear-tasks");
 //get the task input
 const taskInput = document.getElementById("task");
 //get the filter input
-const filterTask = document.querySelector("#task");
+const filter = document.querySelector("#filter");
 
 //load all eventlisteners
 function loadEventListeners() {
@@ -19,6 +19,8 @@ function loadEventListeners() {
   taskList.addEventListener("click", removeTask);
   //Clear tasks event
   clearBtn.addEventListener("click", clearTask);
+  //filter task event
+  filter.addEventListener("keyup", filterTasks);
 }
 
 // Add Task
@@ -78,5 +80,28 @@ const clearTask = () => {
     taskList.removeChild(taskList.firstChild);
   }
 };
+
+//Filter task
+const filterTasks = (e) => {
+  //get text being typed in
+  const text = e.target.value.toLowerCase();
+  //Take all list items in ul and filter
+  const taskListItems = document.querySelectorAll(".list-group-item");
+
+  //loop thru to filter
+  for (const task of taskListItems) {
+    //get text context being typed
+    const item = task.firstChild.textContent;
+    //check item includes text being typed in
+    if (item.toLowerCase().includes(text)) {
+      //if task found display it
+      task.style.display = "block";
+    } else {
+      //nont found hide it
+      task.style.display = "none";
+    }
+  }
+};
+
 // FUNCTION TO LOAD EVENTLISTENERS
 loadEventListeners();
