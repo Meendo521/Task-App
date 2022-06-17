@@ -15,6 +15,8 @@ const filterTask = document.querySelector("#task");
 function loadEventListeners() {
   // Add task Event
   form.addEventListener("submit", addTask);
+  // Remove task event
+  taskList.addEventListener("click", removeTask);
 }
 
 // Add Task
@@ -34,7 +36,7 @@ const addTask = (e) => {
   // create link element
   const link = document.createElement("a");
   // Add a class
-  link.className = "float-end text-danger";
+  link.className = "delete-item float-end text-danger";
   // add html icon
   link.innerHTML = '<i class="fas fa-times-circle"></i>';
   //append link to li
@@ -48,6 +50,17 @@ const addTask = (e) => {
 
   // prevent default element behaviour
   e.preventDefault();
+};
+
+// Remove task
+const removeTask = (e) => {
+  //find the i element with delete-item
+  if (e.target.parentElement.classList.contains("delete-item")) {
+    //contain if want to remove the item
+    if (confirm("Are you sure?"))
+      // remove the li by targeting <i> then <a> then <li>
+      e.target.parentElement.parentElement.remove();
+  }
 };
 
 // FUNCTION TO LOAD EVENTLISTENERS
